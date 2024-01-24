@@ -9,5 +9,8 @@
     
     <h1>¡Hola, esto es HTML desde PHP!</h1>
 
+    <?php echo "<p>Ahora esto se esta imprimiendo con PHP</p><br>
+    Salto de linea con etiquetas html dentro de php";?>
+
 </body>
 </html>
