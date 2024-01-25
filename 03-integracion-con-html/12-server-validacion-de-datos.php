@@ -16,5 +16,3 @@ if (isset($_POST["form"]) ) {
 } else {
     echo "No se envio ningun formulario";
 }
-
-
