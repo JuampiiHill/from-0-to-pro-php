@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="./09-server.php" method="post">
+    <form action="./09-server-post.php" method="post">
 
     <label for="nombre">Nombre</label>
     <input type="text" name="nombre" id="nombre">

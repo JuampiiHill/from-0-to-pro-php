@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- Formulario - action va a ser hacia que url se enviara el formulario -->
-    <form action="./08-server.php" method="get">
+    <form action="./08-server-get.php" method="get">
     <!-- for es darle un nombre al label para que se encale con el id del input -->
     <label for="nombre">Nombre</label>
     <!-- el atributo name es como darle un nombre a nuestro input y cuando llegue al servidor poder obtener ese dato -->
