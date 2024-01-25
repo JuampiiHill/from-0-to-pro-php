@@ -46,9 +46,9 @@
     <label for="galeria">Carga tus imagenes</label>
     <input type="file" multiple name="galeria[]" id="galeria">
 
-    <button type="submit">Enviar formulario</button>
-    </form>
+    <button type="submit">Enviar formulario</button> -->
 
+    </form>
 
 </body>
 </html>
