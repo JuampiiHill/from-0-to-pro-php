@@ -1,3 +1,31 @@
+<?php 
+
+function validate($name, $email, $subject, $message, $form) {
+    return !empty($name) && !empty($email) && !empty($subject) && !empty($message);
+}
+
+$status = "";
+
+if (isset($_POST["form"])) {
+
+    if ( validate(...$_POST) ) {
+
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $subject = $_POST["subject"];
+        $message = $_POST["message"];
+
+        // Mandar el correo
+
+        $status = "success";
+    }
+    else {
+        $status = "danger";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +35,19 @@
     <title>Formulario de contacto</title>
 </head>
 <body>
+
+    <?php if($status == "danger"): ?>
     <div class="alert danger">
-        <span>Danger alert! Change a few things up dan try again</span>
+        <span>Danger alert! Change a few things up and try again</span>
     </div>
+    <?php endif; ?>
 
+    <?php if($status == "success"): ?>
     <div class="alert success">
-
         <span>Success</span>
-
     </div>
-    <form action="#">
+    <?php endif; ?>
+    <form action="./" method="POST">
 
         <h1>Contact us!</h1>
         <div class="input-group">
@@ -26,7 +57,7 @@
 
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="emial" id="emial">
+            <input type="email" name="email" id="email">
         </div>
 
         <div class="input-group">
@@ -40,7 +71,7 @@
         </div>
 
         <div class="button-container">
-            <button type="submit">Send</button>
+            <button name="form" type="submit">Send</button>
         </div>
 
         <div class="contact-info">
