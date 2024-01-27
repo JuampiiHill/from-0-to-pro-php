@@ -1,21 +1,27 @@
 <?php 
 
-function validate($name, $email, $subject, $message, $form) {
+require "mail.php";
+
+function validate($name, $email, $subject, $message) {
     return !empty($name) && !empty($email) && !empty($subject) && !empty($message);
 }
 
 $status = "";
 
-if (isset($_POST["form"])) {
+if ( isset($_POST["form"]) ) {
 
-    if ( validate(...$_POST) ) {
+    if ( validate($_POST["name"],
+    $_POST["email"], $_POST["subject"], $_POST["message"]) ) {
 
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $subject = $_POST["subject"];
-        $message = $_POST["message"];
+        $name = htmlentities($_POST["name"]);
+        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        $subject = htmlentities($_POST["subject"]);
+        $message = htmlentities($_POST["message"]);
+
+        $body = "$name <$email> te envia el siguiente mensaje: <br><br> $message";
 
         // Mandar el correo
+        sendMail($subject, $body, $email, $name, true);
 
         $status = "success";
     }
@@ -23,7 +29,6 @@ if (isset($_POST["form"])) {
         $status = "danger";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +37,7 @@ if (isset($_POST["form"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Formulario de contacto</title>
+    <title>Contact form</title>
 </head>
 <body>
 
@@ -47,9 +52,11 @@ if (isset($_POST["form"])) {
         <span>Success</span>
     </div>
     <?php endif; ?>
+
     <form action="./" method="POST">
 
         <h1>Contact us!</h1>
+
         <div class="input-group">
             <label for="name">Name</label>
             <input type="text" name="name" id="name">

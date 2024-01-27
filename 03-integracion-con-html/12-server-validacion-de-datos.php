@@ -1,13 +1,13 @@
 <?php 
 
 // la funcion empty nos dice si algun valor esta vacio
-// var_dump( empty($_POST['nombre']) );
-//la funcion isset() permite saber si algun indice existe o esta seteado
-// if ( isset($_POST["nombre"]) && !empty($_POST["nombre"])) {
-//     echo "Hola " . $_POST["nombre"];
-// } else {
-//     echo "No enviaste nada";
-// }
+var_dump( empty($_POST['nombre']) );
+// la funcion isset() permite saber si algun indice existe o esta seteado
+if ( isset($_POST["nombre"]) && !empty($_POST["nombre"])) {
+    echo "Hola " . $_POST["nombre"];
+} else {
+    echo "No enviaste nada";
+}
 // var_dump( isset($_POST["nombre"]) );
 
 // Otra manera de validar a traves del boton. el form viene del name="form" del button
