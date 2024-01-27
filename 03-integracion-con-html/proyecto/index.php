@@ -2,7 +2,7 @@
 
 require "mail.php";
 
-function validate($name, $email, $subject, $message) {
+function validate($name, $email, $subject, $message, $form) {
     return !empty($name) && !empty($email) && !empty($subject) && !empty($message);
 }
 
@@ -10,8 +10,7 @@ $status = "";
 
 if ( isset($_POST["form"]) ) {
 
-    if ( validate($_POST["name"],
-    $_POST["email"], $_POST["subject"], $_POST["message"]) ) {
+    if ( validate(...$_POST) ) {
 
         $name = htmlentities($_POST["name"]);
         $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
@@ -73,7 +72,7 @@ if ( isset($_POST["form"]) ) {
         </div>
 
         <div class="input-group">
-            <label for="message">Mesagge</label>
+            <label for="message">Message</label>
             <textarea name="message" id="message"></textarea>
         </div>
 
@@ -83,11 +82,11 @@ if ( isset($_POST["form"]) ) {
 
         <div class="contact-info">
             <div class="info">
-                <span><i class="fas fa-map-marker-alt"></i>13 Saw Mill Circle, North Olmested.</span>
+                <span><i class="fas fa-map-marker-alt"></i> 13 Saw Mill Circle, North Olmested.</span>
             </div>
 
             <div class="info">
-                <span><i class="fas fa-phone"></i>+1 2345 654354</span>
+                <span><i class="fas fa-phone"></i> +1 2345 654354</span>
             </div>
         </div>
     </form>
