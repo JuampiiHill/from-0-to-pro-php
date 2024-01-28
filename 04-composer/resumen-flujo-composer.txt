@@ -17,6 +17,8 @@ Tiene el siguiente formato JSON:
     }
 }
 
+El comando "composer init" nos sirve como asistente. Respondemos las preguntas y al final tendremos generado el archivo composer.json
+
 Sistema de autocarga (autoload):
 Para que no genere error despues de escribir "Text" van dos slash (//). Estariamos configurando algo que se llama namespace. 
 Todo lo que el sistema incluya como text va a hacer referencia a la carpeta "src". Text va a apuntar al nombre de esa carpeta.
@@ -27,26 +29,36 @@ Lo que hacemos es configurar diferentes elementos de autocarga. Con esto logramo
 
 Clase:
 Dentro de src se crea la clase. En este ejemplo se llamará Format.php porque el ejercicio es para dar formato al texto, por eso el 
-paquete se llama text. En la configuracion ponemos el namespace y hace referencia a Text (linea 12). El standar dice que el nombre de la 
-clase debe ser el mismo que el del archivo sin la extension php. Seguimos con con la configuracion 
-"public static function upperText($value)" y retornara un texto que utiliza una funcion propia de php que retorna el texto en mayusculas.
+paquete se llama text. En la configuracion ponemos el namespace y hace referencia a Text (linea 12). El standar dice que el nombre de 
+la clase debe ser el mismo que el del archivo sin la extension php. Seguimos con con la configuracion 
+"public static function upperText($value)" y retornara un texto que utiliza una funcion propia de php que retorna el texto en 
+mayusculas.
 
 Terminal:
 En la terminal podemos decirle a nuestro proyecto que estamos usando el sistema de autocarga de composer. Para eso escribimos 
-"composer dump", y se creara la carpeta "vendor" y dentro un archivo "autoload.php". Si revisamos a detalle esta configuracion podemos ver 
-que a nivel de archivo ("autoload_files.php") se registró el helpers y si revisamos psr-4 ("autoload_psr4.php") podemos ver que el 
+"composer dump", y se creara la carpeta "vendor" y dentro un archivo "autoload.php". Si revisamos a detalle esta configuracion podemos 
+ver que a nivel de archivo ("autoload_files.php") se registró el helpers y si revisamos psr-4 ("autoload_psr4.php") podemos ver que el 
 namespace llamado "text" apunta a la carpeta "src".
 
 Como hacer funcionar todo esto:
 En el archivo helpers hacemos uso de la clase que creamos. Creamos una funcion y retornamos: Text, un backslash \, seguido nombre 
 especifico de la clase y ademas utilizamos el nombre del metodo, que en nuestra clase nombra "upperText". Quedaria asi:
 
-function upper($value)
-{
-    Text\Format::upperText($value);
-} 
+if (! funcion_exists('upper') ) {
+    function upper($value)
+    {
+        return Text\Format::upperText($value);
+    }
+}
+ 
+Cuando creamos funciones de este tipo usamos una condicional. Preguntamos si la funcion no existe para que php la pueda crear Esta 
+seria la manera correcta de configurarlo. si la funcion ya existe dentro de su sistema de carga entonces no lo va a volver a cargar.
+
 Creamos el archivo index.php y requerimos el sistema de autocarga de composer de la siguiente forma:
-    require __DIR__ . '/vendor/autoload.php';. Con esto le decimos al sistema que tenemos un sistema de carga de clases instalado. Compose 
-sabe que eso existe y cuando escriba Text directamente lo va a entender de manera perfecta porque toda la configuracion esta ahi. Esto es 
-algo que siempre debemos hacer. Una vez configurado todo esto ya podemos hacer uso de las funciones/helpers en nuestro archivo index.php.
+    require __DIR__ . '/vendor/autoload.php';. Con esto le decimos al sistema que tenemos un sistema de carga de clases instalado. 
+Compose sabe que eso existe y cuando escriba Text directamente lo va a entender de manera perfecta porque toda la configuracion esta 
+ahi. Esto es algo que siempre debemos hacer. Una vez configurado todo esto ya podemos hacer uso de las funciones/helpers en nuestro 
+archivo index.php.
+
+
 
