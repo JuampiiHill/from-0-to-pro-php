@@ -8,7 +8,7 @@ try {
         throw new Exception("Lo sentimos, no tenemos $pet en este centro de adopcion");
 
     echo "Felicidades por tu nueva mascota";    
-} catch (\Throwable $error) {
+} catch (Throwable $error) {
 
     echo $error->getMessage();
 }
