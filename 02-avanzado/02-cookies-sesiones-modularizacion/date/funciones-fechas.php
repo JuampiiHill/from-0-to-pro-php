@@ -2,6 +2,8 @@
 
 // Establecer zona horario
 
+use Symfony\Component\VarDumper\Cloner\Data;
+
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 
 // Obtener fecha actual
@@ -20,4 +22,20 @@ $now = date("Y-m-d H:i:s");
 // echo date("Y-m-d H:i:s", $unix_time_last_wednesday);
 
 // Fechas inmutables
-$date_inmutable = new DateTimeImmutable();
+// $date_inmutable = new DateTimeImmutable();
+
+// Diferencia de timepo
+
+// $today = new DateTime();
+// $juan_birth = new DateTime("1995-02-06");
+// $interval = $juan_birth->diff($today);
+// echo $interval->format("%y años con %m meses y %d dias");
+
+// // Crear de un formato dado
+// $date = DateTime::createFromFormat("l j F Y", "Sunday 17 April 2022");
+// echo $date->format("Y-m-d H:i:s");
+
+// Modificar una fecha
+$date = new DateTime();
+$date->modify("+1 day + 2 months");
+echo $date->format("Y-m-d");
