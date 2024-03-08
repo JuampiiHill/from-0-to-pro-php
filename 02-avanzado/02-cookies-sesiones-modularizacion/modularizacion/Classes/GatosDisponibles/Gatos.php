@@ -1,5 +1,7 @@
 <?php 
 
+namespace GatosDisponibles;
+
 class Gato {
 
     protected $name;

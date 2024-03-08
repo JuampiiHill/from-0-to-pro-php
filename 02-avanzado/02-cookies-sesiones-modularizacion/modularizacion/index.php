@@ -15,13 +15,13 @@ require("Logic/CreateCats.php");
     
     <ul>
         <li>
-            <?= $mrmichi->getName()?> dice <?= $mrmichi->sayMeow() ?>
+            <?= $mrmichi->getName()?> fue adoptado por  <?= $mrmichi_adopted->getAdoptedBy() ?>
         </li>
         <li>
-            <?= $richard->getName()?> dice <?= $richard->sayMeow() ?>
+            <?= $richard->getName()?> fue adoptado por  <?= $richard_adopted->getAdoptedBy() ?>
         </li>
         <li>
-            <?= $mike->getName()?> dice <?= $mike->sayMeow() ?>
+            <?= $mike->getName()?> fue adoptado por  <?= $mike_adopted->getAdoptedBy() ?>
         </li>
     </ul>
 
