@@ -1,8 +1,8 @@
 <?php 
 
-namespace GatosAdopados;
+namespace App\Classes;
 
-class Gato {
+class GatosAdoptados {
 
     protected $name;
     protected $date_adopted;

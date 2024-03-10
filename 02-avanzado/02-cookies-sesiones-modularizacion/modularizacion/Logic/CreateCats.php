@@ -12,4 +12,4 @@ $mike = new Gato("Mike", "Naranja", 7);
 
 $mrmichi_adopted = new AdoptedCats("Mr. Michi", new DateTime("2024-03-08"), "Juan");
 $richard_adopted = new AdoptedCats("Richard", new DateTime("2019-02-02"), "Emiliano");
-$mike_adopted = new AdoptedCats("Mike", new DateTime("2022-12-22"), "Messi");
+$mike_adopted = new AdoptedCats("Mike", new DateTime("2022-12-18"), "Messi");
