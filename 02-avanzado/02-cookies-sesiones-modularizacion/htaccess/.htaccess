@@ -1,0 +1,14 @@
+# Habilitar sobre escritura en esta carpeta
+RewriteEngine On
+
+#Condicion = Si la url no es un archivo que ya exista lo va a sobreescribir
+RewriteCond %{REQUEST_FILENAME} !-f
+# Si en la url no es un directorio que exista lo sobreescribe
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Expresion regular ^sirve para indicar inicio de una cadena y $ para fin
+#(.*) indicamos que esta regla siempre se aplique. Puede ser cualquier cosa
+# Esta expresion regular capta cualquier cosa que escribamos en la url para que cargue el archivo index.php
+# Lo que hay dentro de parentesis es una variable, por lo tanto que lo que capte de la url lo guarda en una variable
+# que guarda en $1 y lo pasa por parametro GET
+RewriteRule ^(.*)$ index.php?page=$1 [L]
